@@ -15,10 +15,10 @@ Warning : The final dimension of the image will be a square of side 2**n+1.
 
 ## Result
 This is the result of the square algorithm :
-![Square result](https://.github.com/images/result_diamond_square.png)
+![Square result](https://raw.githubusercontent.com/Jeanselme/Map_generator/master/images/result_diamond_square.png)
 
 And after colorization :
-![Map result](https://.github.com/images/result_map.png)
+![Map result](https://raw.githubusercontent.com/Jeanselme/Map_generator/master/images/result_map.png)
 
 ## Library
 Needs PIL and random. Compiled with python3.4
