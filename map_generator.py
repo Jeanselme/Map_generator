@@ -1,3 +1,10 @@
+"""
+	Map Creator
+	by Vincent Jeanselme
+	vincent.jeanselme@gmail.com
+"""
+
+import sys
 from PIL import Image, ImageFilter
 from random import randint
 
@@ -68,7 +75,7 @@ def fromLToRGB(origin) :
 			elif (pixels_ori[i,j] > 160) :
 				pixels_map[i,j] = (int(0.75*pixels_ori[i,j]),int(0.75*pixels_ori[i,j]),int(0.75*pixels_ori[i,j]))
 			elif (pixels_ori[i,j] > 140) :
-				pixels_map[i,j] = (int(0.5*pixels_ori[i,j]),int(pixels_ori[i,j]),int(0.1*pixels_ori[i,j]))			
+				pixels_map[i,j] = (int(0.5*pixels_ori[i,j]),int(pixels_ori[i,j]),int(0.1*pixels_ori[i,j]))
 			elif (pixels_ori[i,j] > 120) :
 				pixels_map[i,j] = (int(0.5*pixels_ori[i,j]),int(pixels_ori[i,j]),int(0.1*pixels_ori[i,j]))
 			elif (pixels_ori[i,j] > 100) :
@@ -77,9 +84,31 @@ def fromLToRGB(origin) :
 				pixels_map[i,j] = (int(0.2*pixels_ori[i,j]),int(0.2*pixels_ori[i,j]),max(int(1.5*pixels_ori[i,j]),100))
 	return map.filter(ImageFilter.SMOOTH_MORE)
 
-n = 10
-img = computeDiamondSquare(n)
-img.save("diamond_square.png")
+def help():
+	print("map_generator [-n dimensionMap] [-o resultFileName]")
+	quit()
 
-map = fromLToRGB(img)
-map.save("map.png")
+def main():
+	arg = sys.argv
+	output = "result"
+	n = 10
+	i = 1
+	# Parse the command line
+	while i+1 < len(arg):
+		if arg[i] == "-o":
+			output = arg[i+1]
+			i+=2
+		elif arg[i] == "-n":
+			n = int(arg[i+1])
+			i+=2
+		else :
+			help()
+
+	img = computeDiamondSquare(n)
+	img.save(output + "_diamond_square.png")
+
+	map = fromLToRGB(img)
+	map.save(output + "_map.png")
+
+if __name__ == '__main__':
+    main()
