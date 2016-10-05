@@ -19,4 +19,4 @@ On the left, this is the result of the square algorithm and on the right, the co
 
 
 ## Library
-Needs PIL and random. Compiled with python3.4
+Needs PIL and random. Executed with python3.4
